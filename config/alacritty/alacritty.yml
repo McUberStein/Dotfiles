@@ -1,0 +1,63 @@
+items:
+  - colors:
+      name: 3024 (dark)
+      author: Chris Kempson
+      primary:
+        background: "#090300"
+        foreground: "#a5a2a2"
+      cursor:
+        text: "#090300"
+        cursor: "#a5a2a2"
+      normal:
+        black: "#090300"
+        red: "#db2d20"
+        green: "#01a252"
+        yellow: "#fded02"
+        blue: "#01a0e4"
+        magenta: "#a16a94"
+        cyan: "#b5e4f4"
+        white: "#a5a2a2"
+      bright:
+        black: "#5c5855"
+        red: "#db2d20"
+        green: "#01a252"
+        yellow: "#fded02"
+        blue: "#01a0e4"
+        magenta: "#a16a94"
+        cyan: "#b5e4f4"
+        white: "#f7f7f7"
+  - theme: 3024.dark
+colors:
+  # Default colors
+  primary:
+    background: '#1a1a1a'
+    foreground: '#c4c5b5'
+
+  # Normal colors
+  normal:
+    black: '#1a1a1a'
+    red: '#f4005f'
+    green: '#98e024'
+    yellow: '#fa8419'
+    blue: '#9d65ff'
+    magenta: '#f4005f'
+    cyan: '#58d1eb'
+    white: '#c4c5b5'
+
+  # Bright colors
+  bright:
+    black: '#625e4c'
+    red: '#f4005f'
+    green: '#98e024'
+    yellow: '#e0d561'
+    blue: '#9d65ff'
+    magenta: '#f4005f'
+    cyan: '#58d1eb'
+    white: '#f6f6ef'
+theme: Monokai-Soda
+
+# Background opacity
+#
+# Window opacity as a floating point number from `0.0` to `1.0`.
+# The value `0.0` is completely transparent and `1.0` is opaque.
+background_opacity: 0.7
