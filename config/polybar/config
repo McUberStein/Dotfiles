@@ -1,6 +1,6 @@
 ;-------------------------------------------------
 ;                                                ;
-;         Polybar config By Nojipiz              ;
+;         Polybar config By McUber             ;
 ;                                                ;
 ;-------------------------------------------------
 
@@ -65,9 +65,3 @@ tray-position = right
 modules-left = i3 wired-network
 modules-center =  date
 modules-right =  wireless-network battery pulseaudio-control
-
-
-
-
-
-
