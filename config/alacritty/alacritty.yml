@@ -3,7 +3,7 @@ items:
       name: 3024 (dark)
       author: Chris Kempson
       primary:
-        background: "#090300"
+        background: "#161925"
         foreground: "#a5a2a2"
       cursor:
         text: "#090300"
@@ -30,7 +30,7 @@ items:
 colors:
   # Default colors
   primary:
-    background: '#1a1a1a'
+    background: '#161925'
     foreground: '#c4c5b5'
 
   # Normal colors
@@ -60,4 +60,5 @@ theme: Monokai-Soda
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.7
+window:
+  opacity: 0.7
