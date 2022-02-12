@@ -8,6 +8,9 @@
 export PATH=~/.npm-global/bin:$PATH
 export PATH=~/.local/bin:$PATH
 
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias badapple='vlc --vout=aa /home/patrik/.ascii_vids/BadApple.mkv'
+alias badapple-full='vlc --vout=aa ~/.ascii_vids/BadApple-full.mp4'
 alias ytmdl='ytmdl --skip-meta'
 alias c='clear'
 
