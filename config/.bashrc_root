@@ -14,4 +14,4 @@ alias badapple-full='vlc --vout=aa ~/.ascii_vids/BadApple-full.mp4'
 alias ytmdl='ytmdl --skip-meta'
 alias c='clear'
 
-PS1="\[\033[01;91m\]\u@\h\[\033[01;36m\]\$\[\033[01;37m\]\w\[\033[01;91m\]>\[$(tput sgr0)\]"
+PS1="\[\033[01;91m\]\u@\h\[\033[01;36m\]#\[\033[01;37m\]\w\[\033[01;91m\]>\[$(tput sgr0)\]"
