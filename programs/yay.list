@@ -1,1 +1,1 @@
-yay -S polybar rofi rofi-surfraw-git feh networkmanager-dmenu-bluetoothfix-git picom-tryone-git nerd-fonts-roboto-mono otf-font-awesome ttf-font-awesome ttf-inconsolata ttf-roboto pavucontrol pulseaudio pulseaudio-alsa i3lock alacritty dmenu vlc xorg-xinput lightdm xbacklight
+yay -S polybar rofi rofi-surfraw-git feh networkmanager-dmenu-bluetoothfix-git picom-tryone-git nerd-fonts-roboto-mono pulseaudio-control otf-font-awesome ttf-font-awesome ttf-inconsolata ttf-roboto pavucontrol pulseaudio pulseaudio-alsa i3lock alacritty dmenu vlc xorg-xinput lightdm xbacklight
