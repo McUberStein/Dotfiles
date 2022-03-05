@@ -8,11 +8,13 @@ exec --no-startup-id "ip link set wlp0s20f3 down"
 exec_always --no-startup-id feh --bg-fill ~/Pictures/eugen.png
 #exec --no-startup-id xautolock -time 10 -locker "i3lock-fancy"
 exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle' -layout us,cz -variant ,qwerty"
-exec --no-startup-id /home/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id "bash ~/.i3/scripts/mousepadTap.sh"
 exec --no-startup-id picom
 exec --no-startup-id nm-applet
 exec --no-startup-id "xset b off"
+exec --no-startup-id "/usr/lib/kdeconnectd"
+
 #-------------------------------------------------------------------------
 
 #--------------------------FONTS------------------------------------------
@@ -93,7 +95,7 @@ set $ws2 "2: Code  "
 set $ws3 "3: Edit  "
 set $ws4 "4: Game  "
 set $ws5 "5:  Anime "
-set $ws6 "6"
+set $ws6 "6  VM  "
 set $ws7 "7"
 set $ws8 "8  Null  ﳠ"
 set $ws9 "9: Music  "
@@ -146,6 +148,3 @@ mode "resize" {
 }
 #------------------------------------------------------------------------------
 #------------------------------------BAR---------------------------------------
-
-
-    
