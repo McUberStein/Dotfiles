@@ -1,0 +1,30 @@
+media-sound/bluez-alsa
+#media-sound/pulseaudio-modules-bt
+sys-libs/libxcrypt ~amd64
+sys-libs/libcrypt ~amd64
+virtual/libcrypt ~amd64
+app-emulation/dxvk-bin
+games-util/gamemode ~amd64
+games-util/lutris
+games-util/game-device-udev-rules
+app-admin/grub-customizer
+x11-misc/i3lock-color
+media-libs/imgui
+kde-misc/kdeconnect ~amd64
+sys-kernel/xanmod-sources ~amd64
+x11-themes/kvantum
+net-misc/megasync
+x11-drivers/nvidia-drivers ~amd64
+dev-util/nvidia-cuda-toolkit ~amd64
+media-video/peek
+sys-boot/plymouth
+media-sound/rhythmbox ~amd64
+dev-lang/rust ~amd64games-util/steam-launcher
+mail-client/thunderbird ~amd64
+mail-client/thunderbird
+app-backup/timeshift
+app-backup/timeshift-autosnap
+app-emulation/virtualbox-modules ~amd64
+app-emulation/virtualbox ~amd64
+media-gfx/img2pdfapp-emulation/wine-staging
+app-emulation/wine-mono
