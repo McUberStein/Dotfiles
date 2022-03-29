@@ -1,0 +1,2 @@
+media-gfx/blender -cuda
+media-libs/opensubdiv -cuda
