@@ -1,19 +1,21 @@
-media-sound/audacity id3tag lv2 portmidi portmixer portsmf sbsms twolame vamp vst ffmpeg ogg oss mad
+net-wireless/lorcon pythonmedia-sound/audacity id3tag lv2 portmidi portmixer portsmf sbsms twolame vamp vst ffmpeg ogg oss mad
 media-sound/audacity id3tag lv2 portmidi portmixer portsmf sbsms twolame vamp vst
 media-libs/opencolorio -opengl
-media-gfx/blender opencl cuda
+media-gfx/blender opencl cuda 
 media-libs/opensubdiv opencl cuda
 media-sound/bluez-alsa lame aac ofono
 net-wireless/blueman appindicator
 #media-sound/pulseaudio -bluetooth
 sys-libs/libxcrypt abi_x86_32
 virtual/libcrypt abi_x86_32
-dev-qt/qtcore icu
+app-admin/doas persistdev-qt/qtcore icu
 sys-libs/zlib minizip
 sys-apps/systemd policykit
 app-emulation/dxvk-bin ABI_X86: 64 32
-app-editors/emacs -gui cairo imagemagick dynamic-loading -toolkit-scroll-bars -xwidgets
-app-emacs/emacs-common -gui
+app-editors/emacs gtk gui cairo imagemagick dynamic-loading -toolkit-scroll-bars -xwidgets
+app-emacs/emacs-common gtk gui
+app-editors/emacs gui cairo imagemagick dynamic-loading -toolkit-scroll-bars -xwidgets
+app-emacs/emacs-common gtk gui
 media-video/ffmpeg mp3 vorbis opus theora xvid twolame vpx x264
 media-video/ffmpeg mp3 twolame vpx x264
 media-fonts/nerd-fonts iosevka inconsolata robotomono ttf otf
@@ -54,6 +56,7 @@ media-gfx/gimp lua aqua doc mng openexr udev webp wmf xpm
 media-libs/gegl cairo
 app-text/poppler cairo
 sys-boot/grub truetype fonts
+
 app-text/editorconfig-core -cli
 kde-frameworks/ktexteditor -editorconfig
 kde-apps/kate -filebrowser -handbook -projects -snippets
@@ -71,8 +74,12 @@ media-libs/opencv qt5 -gtk3
 dev-qt/qtgui jpeg
 media-gfx/nomacs plugins raw zip
 x11-drivers/nvidia-drivers dist-kernel compat abi_x86_32
+media-sound/lame abi_x86_32
+media-sound/mpg123 abi_x86_32
+x11-libs/gdk-pixbuf jpegx11-drivers/nvidia-drivers dist-kernel compat abi_x86_32
 sys-boot/plymouth -udev -static-libs
 x11-misc/polybar i3wm mpd network ipc
+media-sound/rhythmbox dbus -cdr libnotify -mtp python udev
 media-sound/rhythmbox dbus cdr libnotify mtp python udev
 virtual/rust abi_x86_32
 dev-lang/rust -AMDGPU abi_x86_32
