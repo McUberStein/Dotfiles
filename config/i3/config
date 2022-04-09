@@ -10,10 +10,11 @@ exec_always --no-startup-id feh --bg-fill ~/Pictures/eugen.png
 exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle' -layout us,cz -variant ,qwerty"
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id "bash ~/.i3/scripts/mousepadTap.sh"
-exec --no-startup-id picom
+exec --no-startup-id picom --experimental-backends 
 exec --no-startup-id nm-applet
 exec --no-startup-id "xset b off"
 exec --no-startup-id kdeconnectd
+#exec --no-startup-id tundra-check
 
 #-------------------------------------------------------------------------
 
@@ -29,15 +30,17 @@ hide_edge_borders vertical
 set $unfocused_border #000000
 set $focused_border #000000
 
+for_window [class="Emacs"] floating enable
 for_window [workspace=""] floating enable
+for_window [class="pentablet"] floating enable 
 floating_minimum_size 300 x 200
 #floating_maximum_size 500 x 310
 #--------------------------------------------------------------------------
 
 #----------------------AUDIO&BRIGHTNESS------------------------------------
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% 
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% 
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
@@ -91,15 +94,15 @@ bindsym $mod+a focus parent
 
 #----------------------------------WORKSPACES------------------------------------
 set $ws1 "1: Navg  "
-set $ws2 "2: Code  "
-set $ws3 "3: Edit  "
+set $ws2 "2: Code  "
+set $ws3 "3: Edit  "
 set $ws4 "4: Game  "
-set $ws5 "5:  Anime "
-set $ws6 "6  VM  "
-set $ws7 "7  Portage  "
-set $ws8 "8  Null  ﳠ"
+set $ws5 "5: Anime  "
+set $ws6 "6: VM  "
+set $ws7 "7: Server  "
+set $ws8 "8: Null  ﳠ"
 set $ws9 "9: Music  "
-set $ws10 "10: Hentai "
+set $ws10 "10: Hentai  "
 
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -125,7 +128,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 #------------------------------------------------------------------------------
 
 #---------------------------------------APPLICATIONS---------------------------
-for_window [class="Spotify"] move to workspace $ws9
+for_window [class="Rhythmbox"] move to workspace $ws9
 for_window [class="Dbeaver"] move to workspace $ws2
 for_window [class="jetbrains-idea-ce"] move to workspace $ws2
 for_window [class="Subl3"] move to workspace $ws3
