@@ -1,30 +1,150 @@
-media-sound/bluez-alsa
-#media-sound/pulseaudio-modules-bt
-sys-libs/libxcrypt ~amd64
-sys-libs/libcrypt ~amd64
-virtual/libcrypt ~amd64
-app-emulation/dxvk-bin
-games-util/gamemode ~amd64
-games-util/lutris
-games-util/game-device-udev-rules
-app-admin/grub-customizer
-x11-misc/i3lock-color
-media-libs/imgui
-kde-misc/kdeconnect ~amd64
-sys-kernel/xanmod-sources ~amd64
-x11-themes/kvantum
-net-misc/megasync
-x11-drivers/nvidia-drivers ~amd64
-dev-util/nvidia-cuda-toolkit ~amd64
-media-video/peek
-sys-boot/plymouth
-media-sound/rhythmbox ~amd64
-dev-lang/rust ~amd64games-util/steam-launcher
-mail-client/thunderbird ~amd64
-mail-client/thunderbird
-app-backup/timeshift
-app-backup/timeshift-autosnap
-app-emulation/virtualbox-modules ~amd64
-app-emulation/virtualbox ~amd64
-media-gfx/img2pdfapp-emulation/wine-staging
-app-emulation/wine-mono
+net-wireless/lorcon pythonmedia-sound/audacity id3tag lv2 portmidi portmixer portsmf sbsms twolame vamp vst ffmpeg ogg oss mad
+media-sound/audacity id3tag lv2 portmidi portmixer portsmf sbsms twolame vamp vst
+media-libs/opencolorio -opengl
+media-gfx/blender opencl cuda 
+media-libs/opensubdiv opencl cuda
+media-sound/bluez-alsa lame aac ofono
+net-wireless/blueman appindicator
+#media-sound/pulseaudio -bluetooth
+sys-libs/libxcrypt abi_x86_32
+virtual/libcrypt abi_x86_32
+app-admin/doas persistdev-qt/qtcore icu
+sys-libs/zlib minizip
+sys-apps/systemd policykit
+app-emulation/dxvk-bin ABI_X86: 64 32
+app-editors/emacs gtk gui cairo imagemagick dynamic-loading -toolkit-scroll-bars -xwidgets
+app-emacs/emacs-common gtk gui
+app-editors/emacs gui cairo imagemagick dynamic-loading -toolkit-scroll-bars -xwidgets
+app-emacs/emacs-common gtk gui
+media-video/ffmpeg mp3 vorbis opus theora xvid twolame vpx x264
+media-video/ffmpeg mp3 twolame vpx x264
+media-fonts/nerd-fonts iosevka inconsolata robotomono ttf otf
+media-fonts/noto-emoji -buildfontmedia-fonts/nerd-fonts iosevka inconsolata robotomono ttf otf
+media-fonts/noto-emoji buildfontgames-util/gamemode ABI_X86: 64 32
+media-libs/opencv contribdnn contrib
+media-video/ffmpeg sdl
+media-libs/mlt xml sdl ffmpeg frei0r qt5
+dev-libs/libffi abi_x86_32
+sys-libs/ncurses abi_x86_32
+x11-libs/libva opengl
+x11-libs/libX11 abi_x86_32
+x11-libs/libXau abi_x86_32
+media-libs/mesa -vaapi
+x11-libs/libxcb abi_x86_32
+x11-libs/libXdmcp abi_x86_32
+dev-libs/libbsd abi_x86_32
+app-crypt/libmd abi_x86_32
+x11-base/xcb-proto abi_x86_32
+virtual/opengl abi_x86_32
+media-libs/mesa abi_x86_32
+dev-libs/expat abi_x86_32
+media-libs/libglvnd abi_x86_32
+sys-libs/zlib abi_x86_32
+x11-libs/libva abi_x86_32
+x11-libs/libvdpau abi_x86_32
+x11-libs/libdrm abi_x86_32 libkms
+x11-libs/libxshmfence abi_x86_32
+x11-libs/libXext abi_x86_32
+x11-libs/libXxf86vm abi_x86_32
+x11-libs/libXfixes abi_x86_32
+app-arch/zstd abi_x86_32
+sys-devel/llvm abi_x86_32
+x11-libs/libXrandr abi_x86_32
+x11-libs/libXrender abi_x86_32
+app-text/ghostscript-gpl cups
+media-gfx/gimp lua aqua doc mng openexr udev webp wmf xpm
+media-libs/gegl cairo
+app-text/poppler cairo
+sys-boot/grub truetype fonts
+
+app-text/editorconfig-core -cli
+kde-frameworks/ktexteditor -editorconfig
+kde-apps/kate -filebrowser -handbook -projects -snippets
+dev-qt/qtgui egl
+kde-frameworks/sonnet qml
+dev-qt/qtmultimedia qml
+sys-kernel/xanmod-sources symlink build tasktype
+dev-libs/xmlsec -gnutls
+dev-libs/xmlsec nss
+media-libs/harfbuzz icu
+ media-libs/mesa gallium
+media-video/mpv libmpv jack drm cplugins
+net-misc/networkmanager gnutls -nss
+media-libs/opencv qt5 -gtk3
+dev-qt/qtgui jpeg
+media-gfx/nomacs plugins raw zip
+x11-drivers/nvidia-drivers dist-kernel compat abi_x86_32
+media-sound/lame abi_x86_32
+media-sound/mpg123 abi_x86_32
+x11-libs/gdk-pixbuf jpegx11-drivers/nvidia-drivers dist-kernel compat abi_x86_32
+sys-boot/plymouth -udev -static-libs
+x11-misc/polybar i3wm mpd network ipc
+media-sound/rhythmbox dbus -cdr libnotify -mtp python udev
+media-sound/rhythmbox dbus cdr libnotify mtp python udev
+virtual/rust abi_x86_32
+dev-lang/rust -AMDGPU abi_x86_32
+dev-lang/rust-bin abi_x86_32virtual/rust abi_x86_32
+dev-lang/rust -AMDGPU abi_x86_32www-client/seamonkey ipc -chatzilla wifi jack
+media-libs/libpng apng
+dev-db/sqlite secure-delete
+app-crypt/pinentry gtk
+app-crypt/gcr gtkwww-client/seamonkey ipc -chatzilla wifi jack
+media-libs/libpng apng
+dev-db/sqlite secure-delete
+app-crypt/pinetry gtk
+app-crypt/gcr gtkmail-client/thunderbird eme-free hwaccel hardened wifi -wayland
+media-libs/libvpx postproc
+app-emulation/virtualbox qt5 -python -udev -sdk -pam -lvm -java -doc
+app-emulation/virtualbox-modules dist-kernel
+media-video/vlc gstreamer kms mad mp3 vaapi vdpau vpx qt5 ogg ffmpeg alsa a52 xml x264 x265 dav1d faad fdk lua gnutls matroska vcdx ncurses truetype v4l
+media-video/vlc -qt5 ogg ffmpeg alsa a52 xml x264 x265 dav1d faad fdk lua gnutls matroska vcdx ncurses truetype v4l
+media-libs/vulkan-loader layers
+dev-python/PyQt5 gui widgets
+app-emulation/wine-vanilla dos vkd3d opencl oss mp3 gstreamer ABI_X86="32"
+app-emulation/wine-staging abi_x86_32
+x11-libs/libXcursor abi_x86_32
+x11-libs/libXi abi_x86_32
+media-libs/alsa-lib abi_x86_32
+media-libs/fontconfig abi_x86_32
+sys-devel/gettext abi_x86_32
+media-sound/pulseaudio abi_x86_32
+net-libs/gnutls abi_x86_32
+sys-apps/attr abi_x86_32
+media-libs/freetype abi_x86_32
+sys-apps/dbus abi_x86_32
+sys-libs/libunwind abi_x86_32
+media-libs/vulkan-loader abi_x86_32
+x11-libs/libXcomposite abi_x86_32
+app-emulation/wine-gecko abi_x86_32
+media-libs/vulkan-layers abi_x86_32
+dev-util/spirv-tools abi_x86_32
+dev-util/glslang abi_x86_32
+app-arch/bzip2 abi_x86_32
+media-libs/libpng abi_x86_32
+dev-libs/libtasn1 abi_x86_32
+dev-libs/libunistring abi_x86_32
+dev-libs/nettle abi_x86_32
+dev-libs/gmp abi_x86_32
+net-dns/libidn2 abi_x86_32
+media-libs/libsndfile abi_x86_32
+media-libs/speexdsp abi_x86_32
+net-libs/libasyncns abi_x86_32
+dev-libs/glib abi_x86_32
+media-plugins/alsa-plugins abi_x86_32
+dev-libs/libpcre abi_x86_32
+sys-apps/util-linux abi_x86_32
+media-libs/flac abi_x86_32
+media-libs/libogg abi_x86_32
+media-libs/libvorbis abi_x86_32
+media-libs/opus abi_x86_32
+virtual/libintl abi_x86_32
+virtual/libiconv abi_x86_32
+virtual/libudev abi_x86_32
+sys-apps/systemd abi_x86_32
+sys-libs/libcap abi_x86_32
+dev-libs/libgcrypt abi_x86_32
+app-arch/lz4 abi_x86_32
+sys-libs/pam abi_x86_32
+dev-libs/libgpg-error abi_x86_32
+x11-base/xorg-server xorg systemd -minimal -selinux suid -test
+x11-base/xorg-x11 fonts
