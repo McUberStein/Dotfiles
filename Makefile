@@ -1,4 +1,6 @@
-CHECKFOR = "$(shell bash if command -v ! $(com) > /dev/null"
+define confcpy =
+$(shell if ! command -v $(1) > /dev/null; then echo "$(1) is not installed" > /dev/tty; else cp -r config/$(1) ~/.config/ && echo "$(1) config copied!"; fi)
+endef
 
 help: ## Shows this help screen
 	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
