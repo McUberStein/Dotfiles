@@ -20,7 +20,8 @@ dots_deploy: ## Copy configuration files
 
 homemake_prepare: ## Prepare the HomeMakefile
 	@cp Home-Make/Home-Makefile ~/Makefile
-	@echo 'alias homemake="make -C ~/" >> ~/.bashrc'
+	@echo 'alias homemake="make -C ~/"' >> ~/.bashrc
+	@source ~/.bashrc
 
 portage_configure: ## Copy Portage configuration
 	@sudo cp portage/* /etc/portage/
