@@ -2,11 +2,23 @@ CHECKFOR = "$(shell bash if command -v ! $(com) > /dev/null"
 
 help: ## Shows this help screen
     @egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
-install_homemake: ## Installs Home-Makefile
+
+all: homemake_prepare dots_deploy portage_configure
+
+homemake_prepare: ## Installs Home-Makefile
     @mv Home-Make/Home-Makefile ~/
     @echo 'alias homemake="make -C ~/"' >> ~/.bashrc
     @mv Home-Make/script1 ~/ResetPC
     @mkdir -p ~/.scripts
     @mv Home-Make/script2 ~/.scripts/
-install_dots: ## Installs dotfiles
-    @$(shell bash export com = rofi && if $(CHECKFOR); then echo "Please install rofi" > /dev/tty)
+    
+dots_deploy: ## Copy configuration files
+ 	@$(call confcpy,"rofi")
+ 	@$(call confcpy,"alacritty")
+ 	@$(call confcpy,"dunst")
+ 	@$(call confcpy,"polybar")
+ 	@$(call confcpy,"picom")
+ 	@cp -r config/i3 ~/.i3
+    
+portage_configure: ## Copy Portage configuration
+	@sudo cp portage/* /etc/portage/
