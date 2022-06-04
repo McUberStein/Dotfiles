@@ -1,16 +1,16 @@
 CHECKFOR = "$(shell bash if command -v ! $(com) > /dev/null"
 
 help: ## Shows this help screen
-    @egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 all: homemake_prepare dots_deploy portage_configure
 
 homemake_prepare: ## Installs Home-Makefile
-    @mv Home-Make/Home-Makefile ~/
-    @echo 'alias homemake="make -C ~/"' >> ~/.bashrc
-    @mv Home-Make/script1 ~/ResetPC
-    @mkdir -p ~/.scripts
-    @mv Home-Make/script2 ~/.scripts/
+	@mv Home-Make/Home-Makefile ~/
+	@echo 'alias homemake="make -C ~/"' >> ~/.bashrc
+	@mv Home-Make/script1 ~/ResetPC
+	@mkdir -p ~/.scripts
+	@mv Home-Make/script2 ~/.scripts/
     
 dots_deploy: ## Copy configuration files
  	@$(call confcpy,"rofi")
