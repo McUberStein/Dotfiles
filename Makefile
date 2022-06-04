@@ -12,7 +12,9 @@ homemake_prepare: ## Installs Home-Makefile
 	@echo 'alias homemake="make -C ~/"' >> ~/.bashrc
 	@mv Home-Make/script1 ~/ResetPC
 	@mkdir -p ~/.scripts
-	@mv Home-Make/script2 ~/.scripts/
+	@mv Home-Make/script2 ~/.scripts/game.sh
+	@chmod +x ~/ResetPC
+	@chmod +x ~/.scripts/game.sh
     
 dots_deploy: ## Copy configuration files
 	@$(call confcpy,"rofi")
