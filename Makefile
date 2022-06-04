@@ -6,7 +6,7 @@ $(shell if ! command -v $(1) > /dev/null; then echo "$(1) is not installed" > /d
 endef
 
 help: ## Shows this help screen
-    @egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 all: dots_deploy homemake_prepare portage_configure
 
