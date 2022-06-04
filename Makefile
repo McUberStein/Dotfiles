@@ -15,12 +15,12 @@ homemake_prepare: ## Installs Home-Makefile
 	@mv Home-Make/script2 ~/.scripts/
     
 dots_deploy: ## Copy configuration files
- 	@$(call confcpy,"rofi")
- 	@$(call confcpy,"alacritty")
- 	@$(call confcpy,"dunst")
- 	@$(call confcpy,"polybar")
- 	@$(call confcpy,"picom")
- 	@cp -r config/i3 ~/.i3
+	@$(call confcpy,"rofi")
+	@$(call confcpy,"alacritty")
+	@$(call confcpy,"dunst")
+	@$(call confcpy,"polybar")
+	@$(call confcpy,"picom")
+	@cp -r config/i3 ~/.i3
     
 portage_configure: ## Copy Portage configuration
 	@sudo cp portage/* /etc/portage/
