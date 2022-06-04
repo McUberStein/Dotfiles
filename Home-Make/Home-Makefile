@@ -138,14 +138,9 @@ retar_ecchi: ## Regenerates the Ecchi tarball
 verify_ecchi: ## Checks contents of Ecchi tarball
 	$(shell cp ~/Documents/Tarballs/ecchitervaball.tar.xz /tmp/; cd /tmp; tar -xf ecchitervaball.tar.xz; if diff -r /tmp/Ecchi ~/Pictures/LOST.DIR/DIR/Backup/A/H/BACKUP/Ecchi > /dev/null; then echo "$(ecchi_Y)" > /dev/tty; rm -rf /tmp/Ecchi; rm /tmp/ecchitervaball.tar.xz; else echo "$(ecchi_N)" > /dev/tty; rm -rf /tmp/Ecchi; rm /tmp/ecchitervaball.tar.xz; fi)
 
-afterdeath:
-	@exec ~/.local/share/last/last
-
 cpu_govern: ## Shows the current scaling governor of all cpu cores
 	@cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 
-ssh:
-	@ssh u0_a314@unixomi -p 8022 && touch testfile
 
 #--------------------------------##SUDO_RECIPES##--------------------------------#
 
