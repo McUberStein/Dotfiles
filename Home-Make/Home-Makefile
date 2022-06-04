@@ -1,0 +1,163 @@
+#-------------------McUberStein's Home-Makefile--------------------------------#
+
+
+## Does a number of things ranging from compilation and cleaning to image conversion and file compression
+## To use, invoke "make -C ~/ <recipe>" or make an alias homemake='make -C ~/'
+
+
+#--------------------------------##VARIABLES##--------------------------------#
+
+
+SHELL:=/bin/bash
+
+
+ecchi_Y = "Contents of Ecchi tarball and Ecchi directory match"
+ecchi_N = "Contents of Ecchi tarball and Ecchi directory do not match!"
+music_Y = "Contents of Music tarball and Music directory match"
+music_N = "Contents of Music tarball and Music directory do not match!"
+metadir = "$(shell bash -c 'cd $(PWD) && read -e -p "Directory to purge metadata from: " DIR; echo $$DIR')"
+osudir = "$(shell bash -c 'cd $(PWD) && read -e -p "Input path to Osu AppImage: " DIR; echo $$DIR')"
+difference = $(shell diff --unchanged-group-format= --changed-group-format=%\> \
+  --new-line-format='%l ' -biw ~/.tmpfile ~/.tmpfile2)
+tardir ?= "$(shell bash -c 'cd $(PWD) && read -e -p "Which file/directory should be archived?: " DIR; echo $$DIR')"
+tarname_xz ?= "$(shell bash -c 'read -p "What should the archive be called?: " NAME; echo $$NAME').tar.xz"
+tarname_gz ?= "$(shell bash -c 'read -p "What should the archive be called?: " NAME; echo $$NAME').tar.gz"
+tarname ?= "$(shell bash -c 'read -p "What should the archive be called?: " NAME; echo $$NAME').tar"
+7zname ?= "$(shell bash -c 'read -p "What should the archive be called?: " NAME; echo $$NAME').7z"
+gifinput ?= "$(shell bash -c 'cd $(PWD) && read -e -p "Which file to convert to GIF? " INP; echo $$INP')"
+gifname  ?= "$(shell bash -c 'read -p "What should the GIF be called? " GNAME; echo $$GNAME').gif"
+sysname = $(shell hostname)
+usr = $(shell whoami)
+arguments = $(filter-out $@,$(MAKECMDGOALS))
+
+
+#--------------------------------##RECIPES##--------------------------------#
+
+
+help: ## Show this help screen
+	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+nothing: ## Does absolutely nothing
+	@echo "You have made nothing. Congrats!"
+
+compile_all: ## Compiles all .c files in current directory
+	$(shell ls $(PWD) > ~/.tmpfile)
+	@gcc $(PWD)/*.c -o $(PWD)/compiled_bin
+
+gif_simple: ## Makes a simple, small, low-quality GIF
+	@echo "Mp4 files:"
+	$(shell ls $(PWD) | grep .mp4 > /dev/tty)
+	$(shell ffmpeg -i $(PWD)/$(gifinput) $(PWD)/$(gifname))
+
+gif_palette: ## Makes a relatively large lossles GIF
+	@echo "Mp4 files:"
+	$(shell ls $(PWD) | grep .mp4 > /dev/tty)
+	$(shell ffmpeg -i $(PWD)/$(gifinput) -filter_complex "[0:v] split [a][b];[a] palettegen,fps=30 [p];[b][p] paletteuse,fps=30" $(PWD)/$(gifname))
+
+tar_xz: ## Makes a tar.xz file
+	$(shell echo "Files: $(shell ls $(PWD))" > $(shell tty))
+	$(shell tar -cJvf $(tarname_xz) -C $(PWD) $(tardir) > $(shell tty))
+	$(shell mv ~/*.tar.xz $(PWD)/)
+
+tar_gz: ## Makes a tar.gz file
+	$(shell echo "Files: $(shell ls $(PWD))" > $(shell tty))
+	$(shell tar -czvf $(tarname_gz) -C $(PWD) $(tardir) > $(shell tty))
+	$(shell mv ~/*.tar.gz $(PWD)/)
+
+tar: ## Makes a tar file
+	$(shell echo "Files: $(shell ls $(PWD))" > $(shell tty))
+	$(shell tar -czvf $(tarname) -C $(PWD) $(tardir) > $(shell tty))
+	$(shell mv ~/*.tar $(PWD)/)
+
+7z_max: ## Make .7z archive with max compression
+	@echo "Files: $(shell ls $(PWD) > /dev/tty)"
+	@7z a $(7zname) -m0=LZMA -mx=9 $(PWD)/$(tardir)
+	@mv ~/*.7z $(PWD)/
+
+ascii: ## Converts an image to colorless ascii art
+	@exec ~/.local/bin/ascii-image-converter -cf $(PWD)/$(arguments)
+
+ascii_braille: ## Converts an image to colorless braille art
+	@exec ~/.local/bin/ascii-image-converter -cbf $(PWD)/$(arguments)
+
+caca: ## Converts an image to colorful ascii art
+	@exec ~/.local/bin/ascii-image-converter -Ccf $(PWD)/$(arguments)
+
+caca_braille: ## Converts an image to colorful braille art
+	@exec ~/.local/bin/ascii-image-converter -Cbcf $(PWD)/$(arguments)
+
+menu: ## Shows the Menu of Doom
+	@exec ~/ResetPC
+
+emacs_clean: ## Cleans Emacs auto-save remnant files
+	@rm $(PWD)/*~
+
+emacs_prime: ## Prepares the Emacs daemon
+	@exec /usr/bin/emacs --daemon && disown
+	@echo "Emacs primed"
+
+emacs_kill: ## Kills the Emacs daemon
+	@killall emacs
+	@echo "All instances of Emacs killed"
+
+picom_start: ## Starts Picom with experimental backends
+	@exec /usr/local/bin/picom -b --experimental-backends
+	@echo "Picom started"
+
+picom_stop: ## Stops Picom
+	@killall picom
+	@echo "Picom stopped"
+
+osu_update: ## Updates the Osu Lazer AppImage, needs a path
+	@mv $(PWD)/$(osudir) ~/.local/share/applications/osu.AppImage
+	@chmod +x ~/.local/share/applications/osu.AppImage
+
+purge_meta: ## Purges metadata from a directory
+	@mid3v2 -D $(PWD)/$(metadir)/*
+
+phone_mount: ## Mounts a phone to Public using jmtpfs
+	@$(shell /usr/bin/jmtpfs -o nonempty /home/patrik/Public)
+
+retar_music: ## Regenerates the Music tarball
+	@cd ~/
+	@tar -cJvf musicteerball.tar.xz Music
+	@mv ~/musicteerball.tar.xz ~/Documents/Tarballs/
+	@echo "Music tarball up to date"
+	@$(MAKE) verify_music
+
+verify_music: ## Checks contents of Music tarball
+	@$(shell cp ~/Documents/Tarballs/musicteerball.tar.xz /tmp/; cd /tmp; tar -xf musicteerball.tar.xz; if diff -r /tmp/Music ~/Music > /dev/null; then echo "$(music_Y)" > /dev/tty; rm -rf /tmp/Music; rm /tmp/musicteerball.tar.xz; else echo "$(music_N)" > /dev/tty; rm -rf /tmp/Music; rm /tmp/musicteerball.tar.xz; fi)
+
+retar_ecchi: ## Regenerates the Ecchi tarball
+	@tar -C ~/Pictures/LOST.DIR/DIR/Backup/A/H/BACKUP -cJvf ecchitervaball.tar.xz Ecchi
+	@mv ~/ecchitervaball.tar.xz ~/Documents/Tarballs/
+	@echo "Ecchi tarball up to date"
+	@exec ~/.scripts/checks/ecchicheck.sh
+	@$(MAKE) verify_ecchi
+
+verify_ecchi: ## Checks contents of Ecchi tarball
+	$(shell cp ~/Documents/Tarballs/ecchitervaball.tar.xz /tmp/; cd /tmp; tar -xf ecchitervaball.tar.xz; if diff -r /tmp/Ecchi ~/Pictures/LOST.DIR/DIR/Backup/A/H/BACKUP/Ecchi > /dev/null; then echo "$(ecchi_Y)" > /dev/tty; rm -rf /tmp/Ecchi; rm /tmp/ecchitervaball.tar.xz; else echo "$(ecchi_N)" > /dev/tty; rm -rf /tmp/Ecchi; rm /tmp/ecchitervaball.tar.xz; fi)
+
+afterdeath:
+	@exec ~/.local/share/last/last
+
+cpu_govern: ## Shows the current scaling governor of all cpu cores
+	@cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+ssh:
+	@ssh u0_a314@unixomi -p 8022 && touch testfile
+
+#--------------------------------##SUDO_RECIPES##--------------------------------#
+
+
+phone_umount: ## Unmounts jmtpfs mount from Public
+	@$(shell umount /home/patrik/Public)
+
+cpu_powersave: ## Sets all cpu cores to powersave mode
+	@$(shell cpufreq-set -c 0 -g powersave && cpufreq-set -c 1 -g powersave && cpufreq-set -c 2 -g powersave && cpufreq-set -c 3 -g powersave && cpufreq-set -c 4 -g powersave && cpufreq-set -c 5 -g powersave && cpufreq-set -c 6 -g powersave && cpufreq-set -c 7 -g powersave)
+
+cpu_performance: ## Sets all cpu cores to performance mode
+	@$(shell cpufreq-set -c 0 -g performance && cpufreq-set -c 1 -g performance && cpufreq-set -c 2 -g performance && cpufreq-set -c 3 -g performance && cpufreq-set -c 4 -g performance && cpufreq-set -c 5 -g performance && cpufreq-set -c 6 -g performance && cpufreq-set -c 7 -g performance)
+
+cpu_normal: ## Sets all cpu cores to schedutil mode
+	@$(shell cpufreq-set -c 0 -g schedutil && cpufreq-set -c 1 -g schedutil && cpufreq-set -c 2 -g schedutil && cpufreq-set -c 3 -g schedutil && cpufreq-set -c 4 -g schedutil && cpufreq-set -c 5 -g schedutil && cpufreq-set -c 6 -g schedutil && cpufreq-set -c 7 -g schedutil)
