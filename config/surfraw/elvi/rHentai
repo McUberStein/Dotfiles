@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# AUTHOR: McUberStein3301 
+#
+# DATE: Tue Jul 19 2022
+#
+# DESC: Elvi to search r/Hentai 
+# elvis: rHentai		-- Search r/Hentai (www.reddit.com/r/Hentai)
+. surfraw || exit 1
+
+w3_usage_hook () {
+    cat <<EOF
+Usage: $w3_argv0 [options] [search words]...
+Description:
+  Search r/Hentai (www.reddit.com/r/Hentai) for hentai
+EOF
+    w3_global_usage
+}
+
+w3_config
+w3_parse_args "$@"
+if test -z "$w3_args"; then
+    w3_browse_url "https://www.reddit.com/r/Hentai"
+else
+    formatted_args=$(echo $w3_args | sed 's/ /%20/g')
+    w3_browse_url "https://www.reddit.com/r/Hentai/search/?q=${formatted_args}&restrict_sr=1&sr_nsfw=1"
+fi

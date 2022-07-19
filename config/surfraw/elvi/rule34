@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# AUTHOR: McUberStein3301 
+#
+# DATE: Tue Jul 19 2022
+#
+# DESC: Elvi to search Rule34
+# elvis: rule34		-- Search Rule34 (www.rule34.xxx)
+. surfraw || exit 1
+
+w3_usage_hook () {
+    cat <<EOF
+Usage: $w3_argv0 [options] [search words]...
+Description:
+  Search Rule34 (www.rule34.xxx) for hentai
+EOF
+    w3_global_usage
+}
+
+w3_config
+w3_parse_args "$@"
+if test -z "$w3_args"; then
+    w3_browse_url "https://www.rule34.xxx/"
+else
+    formatted_args=$(echo $w3_args | sed 's/ /+/g')
+    w3_browse_url "https://rule34.xxx/index.php?page=post&s=list&tags=${formatted_args}"
+fi
